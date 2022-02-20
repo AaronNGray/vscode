@@ -419,7 +419,7 @@ declare namespace monaco {
 		static readonly Shift: number;
 		static readonly Alt: number;
 		static readonly WinCtrl: number;
-		static chord(firstPart: number, secondPart: number): number;
+		static chord(...parts: number[]): number | number[];
 	}
 
 	export interface IMarkdownString {

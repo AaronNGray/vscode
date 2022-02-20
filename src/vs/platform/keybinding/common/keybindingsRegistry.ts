@@ -20,7 +20,7 @@ export interface IKeybindingItem {
 	extensionId: string | null;
 	isBuiltinExtension: boolean;
 }
-
+/*
 export interface IKeybindings {
 	primary?: number;
 	secondary?: number[];
@@ -35,6 +35,23 @@ export interface IKeybindings {
 	mac?: {
 		primary: number;
 		secondary?: number[];
+	};
+}
+*/
+export interface IKeybindings {
+	primary?: number | number[];
+	secondary?: (number | number[])[];
+	win?: {
+		primary?: number | number[];
+		secondary?: (number | number[])[];
+	};
+	linux?: {
+		primary?: number | number[];
+		secondary?: (number | number[])[];
+	};
+	mac?: {
+		primary?: number | number[];
+		secondary?: (number | number[])[];
 	};
 }
 
@@ -90,7 +107,7 @@ class KeybindingsRegistryImpl implements IKeybindingsRegistry {
 	/**
 	 * Take current platform into account and reduce to primary & secondary.
 	 */
-	private static bindToCurrentPlatform(kb: IKeybindings): { primary?: number; secondary?: number[] } {
+	private static bindToCurrentPlatform(kb: IKeybindings): { primary?: number | number[]; secondary?: (number | number[])[] } {
 		if (OS === OperatingSystem.Windows) {
 			if (kb && kb.win) {
 				return kb.win;

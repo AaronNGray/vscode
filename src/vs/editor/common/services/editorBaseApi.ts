@@ -19,8 +19,8 @@ export class KeyMod {
 	public static readonly Alt: number = ConstKeyMod.Alt;
 	public static readonly WinCtrl: number = ConstKeyMod.WinCtrl;
 
-	public static chord(firstPart: number, secondPart: number): number {
-		return KeyChord(firstPart, secondPart);
+	public static chord(...parts: number[]): number | number[] {
+		return KeyChord(...parts);
 	}
 }
 

@@ -819,7 +819,12 @@ export const enum KeyMod {
 	WinCtrl = (1 << 8) >>> 0,
 }
 
+/*
 export function KeyChord(firstPart: number, secondPart: number): number {
 	const chordPart = ((secondPart & 0x0000FFFF) << 16) >>> 0;
 	return (firstPart | chordPart) >>> 0;
+}
+*/
+export function KeyChord(...parts: number[]): number | number[] {
+	return parts.length > 1 ? parts : parts[0];
 }

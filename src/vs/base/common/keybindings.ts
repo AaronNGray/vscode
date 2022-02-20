@@ -27,8 +27,8 @@ const enum BinaryKeybindingsMask {
 	WinCtrl = (1 << 8) >>> 0,
 	KeyCode = 0x000000FF
 }
-
-export function createKeybinding(keybinding: number, OS: OperatingSystem): Keybinding | null {
+/*
+export function createKeybinding(keybinding: number | number[], OS: OperatingSystem): Keybinding | null {
 	if (keybinding === 0) {
 		return null;
 	}
@@ -41,6 +41,18 @@ export function createKeybinding(keybinding: number, OS: OperatingSystem): Keybi
 		]);
 	}
 	return new ChordKeybinding([createSimpleKeybinding(firstPart, OS)]);
+}
+*/
+export function createKeybinding(keybinding: number | number[], OS: OperatingSystem): Keybinding | null {
+	if (keybinding === 0) {
+		return null;
+	}
+	if (keybinding instanceof Array) {
+		return new ChordKeybinding((<number[]>keybinding).map(binding => createSimpleKeybinding(binding, OS)));
+	}
+	else {
+		return new ChordKeybinding([createSimpleKeybinding(<number>keybinding, OS)]);
+	}
 }
 
 export function createSimpleKeybinding(keybinding: number, OS: OperatingSystem): SimpleKeybinding {
