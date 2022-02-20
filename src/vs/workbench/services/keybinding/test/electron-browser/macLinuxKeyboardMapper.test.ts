@@ -37,7 +37,7 @@ suite('keyboardMapper - MAC de_ch', () => {
 		_assertKeybindingTranslation(mapper, OperatingSystem.Macintosh, kb, expected);
 	}
 
-	function _assertResolveKeybinding(k: number, expected: IResolvedKeybinding[]): void {
+	function _assertResolveKeybinding(k: number | number[], expected: IResolvedKeybinding[]): void {
 		assertResolveKeybinding(mapper, createKeybinding(k, OperatingSystem.Macintosh)!, expected);
 	}
 
@@ -499,7 +499,7 @@ suite('keyboardMapper - LINUX de_ch', () => {
 		_assertKeybindingTranslation(mapper, OperatingSystem.Linux, kb, expected);
 	}
 
-	function _assertResolveKeybinding(k: number, expected: IResolvedKeybinding[]): void {
+	function _assertResolveKeybinding(k: number | number[], expected: IResolvedKeybinding[]): void {
 		assertResolveKeybinding(mapper, createKeybinding(k, OperatingSystem.Linux)!, expected);
 	}
 
@@ -868,7 +868,7 @@ suite('keyboardMapper - LINUX en_us', () => {
 		return assertMapping(WRITE_FILE_IF_DIFFERENT, mapper, 'linux_en_us.txt');
 	});
 
-	function _assertResolveKeybinding(k: number, expected: IResolvedKeybinding[]): void {
+	function _assertResolveKeybinding(k: number | number[], expected: IResolvedKeybinding[]): void {
 		assertResolveKeybinding(mapper, createKeybinding(k, OperatingSystem.Linux)!, expected);
 	}
 

@@ -17,7 +17,7 @@ async function createKeyboardMapper(isUSStandard: boolean, file: string): Promis
 	return new WindowsKeyboardMapper(isUSStandard, rawMappings);
 }
 
-function _assertResolveKeybinding(mapper: WindowsKeyboardMapper, k: number, expected: IResolvedKeybinding[]): void {
+function _assertResolveKeybinding(mapper: WindowsKeyboardMapper, k: number | number[], expected: IResolvedKeybinding[]): void {
 	const keyBinding = createKeybinding(k, OperatingSystem.Windows);
 	assertResolveKeybinding(mapper, keyBinding!, expected);
 }
